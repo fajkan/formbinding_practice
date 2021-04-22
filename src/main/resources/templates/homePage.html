@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header card bg-info text-white">
+            <h2>Registration Form</h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/admin/add}" method="post" th:object="${customer}">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Email  </label>
+                            <input type="text" th:field="*{email}" placeholder="Enter Email Here..." class="form-control">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Registration date  </label>
+                            <input type="date" th:field="*{regDate}" placeholder=" .." class="date-cell">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('regDate')}" th:errors="*{regDate}"></p>
+                        </div>
+
+                        <!--
+                        <form th:action="@{/admin/add}" method="post" th:object="${customerDetails}">
+                        <div class="col-sm-6 form-group">
+                            <label>Street adress </label>
+                            <input type="text"  th:field="*{street}" placeholder="Enter Street Adress Here..." class="form-control">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{street}"></p>
+                        </div>
+                        </form>
+                        -->
+
+                    </div>
+
+                    <hr/>
+                    <button type="submit" class="btn btn-primary btn-block mb-3">Save</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
